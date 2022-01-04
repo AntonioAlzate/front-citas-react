@@ -7,18 +7,19 @@ import {
   const initialState = {
     citas: {
         lista: [],
-        nombre: ''
+        cita: {}
     }
   }
 
   export default function citasReducer(state = initialState, action) {
-
+    console.log(action.type);
     switch (action.type) {
+        
         case OBTENER_TODOS:
             return {
                 ...state, citas: {
                     lista: action.payload,
-                    nombre: ''
+                    cita: {}
                 }
 
             }
@@ -26,8 +27,8 @@ import {
             case OBTENER_POR_ID:
                 return {
                     ...state, citas: {
-                        lista: action.payload,
-                        nombre: ''
+                        lista: state.lista,
+                        cita: action.payload
                     }
                 }
 

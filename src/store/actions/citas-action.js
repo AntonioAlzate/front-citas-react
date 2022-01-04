@@ -27,7 +27,7 @@ export const getCitasByIdPaciente = (id) => {
       citasService
         .citasListByIdPaciente(id)
         .then((data) => {
-          dispatch(actionCreator(OBTENER_POR_ID, "payload")(data));
+          dispatch(actionCreator(OBTENER_POR_ID, "payload")(data.data[0]));
         })
         .catch((error) => {
           dispatch(actionCreator(INICIAL, "payload")(error));

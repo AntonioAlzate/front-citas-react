@@ -1,22 +1,22 @@
-import { getCitas, getCitasByIdPaciente } from './store/actions/citas-action';
-import {useSelector, useDispatch} from 'react-redux';
-import {useEffect} from 'react'
-import citasReducer from './store/reducers/citas-reducer';
+import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
+import ListaCitas from "./pages/ListaCitas";
+import CitaDetalle from "./pages/CitaDetalle";
+import {Provider, useDispatch} from 'react-redux';
+import store from './store/store';
+import { useEffect } from "react";
+import { getCitas } from "./store/actions/citas-action";
+
 
 function App() {
-  
-  const dispatch = useDispatch();
-  
-  const citas = useSelector(state => state.citasReducer.citas)
-
-  useEffect(() => {
-    dispatch(getCitasByIdPaciente(7))
-  }, [dispatch]);
 
   return (
-    <div className="App">
-      <h1>Front Citas</h1>
-    </div>
+
+    <BrowserRouter>
+    <Routes>
+      <Route exact path="/" element={<ListaCitas />} />
+      <Route path="/cita/:Id" element={<CitaDetalle />} />
+    </Routes>
+  </BrowserRouter>
   );
 }
 
